@@ -4,8 +4,7 @@ class Reviewbuddy < Formula
   desc "AI-powered review research assistant with parallel crawling and synthesis"
   homepage "https://github.com/willemave/reviewbuddy"
   url "https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "REPLACE_WITH_RELEASE_SHA256"
-  version "0.1.0"
+  sha256 "26120c196daec1bf6ae19876e5f1734d0108aba0f9ef60f7f9b8a25f7ae6448e"
 
   depends_on "ffmpeg"
   depends_on "python@3.13"
