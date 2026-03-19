@@ -34,7 +34,7 @@ class Reviewbuddy < Formula
   end
 
   test do
-    assert_match "uv tool run --from", (bin/"reviewbuddy").read
+    assert_match "tool run --from", (bin/"reviewbuddy").read
     assert_path_exists pkgshare/"skills/reviewbuddy-tap-maintainer/SKILL.md"
   end
 end
