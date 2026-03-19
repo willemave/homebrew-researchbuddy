@@ -12,7 +12,7 @@ Use this skill when the task is to publish or update the ReviewBuddy Homebrew ta
 
 1. Confirm the source repo has a pushed Git tag for the target release.
 2. Open `Formula/reviewbuddy.rb`.
-3. Update `url`, `sha256`, and `version`.
+3. Update `url` and `sha256`.
 4. Run:
    ```bash
    brew audit --strict --online reviewbuddy

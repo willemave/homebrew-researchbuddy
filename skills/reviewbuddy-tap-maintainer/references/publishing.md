@@ -16,7 +16,6 @@
 3. Update the formula fields:
    - `url`
    - `sha256`
-   - `version`
 4. Validate:
    ```bash
    brew audit --strict --online reviewbuddy

@@ -10,7 +10,9 @@ class Reviewbuddy < Formula
   depends_on "python@3.13"
 
   def install
-    virtualenv_install_with_resources
+    virtualenv = virtualenv_create(libexec, Formula["python@3.13"].opt_bin/"python3.13")
+    system virtualenv.root/"bin/pip", "install", "."
+    bin.install_symlink virtualenv.root/"bin/reviewbuddy"
     pkgshare.install "skills"
     pkgshare.install "docs"
   end

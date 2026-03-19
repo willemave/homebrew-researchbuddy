@@ -22,7 +22,7 @@ brew install willemave/reviewbuddy/reviewbuddy
    ```bash
    curl -L https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.0.tar.gz | shasum -a 256
    ```
-3. Update `Formula/reviewbuddy.rb` with the new `url`, `sha256`, and `version`.
+3. Update `Formula/reviewbuddy.rb` with the new `url` and `sha256`.
 4. Validate locally:
    ```bash
    brew audit --strict --online reviewbuddy
