@@ -28,13 +28,13 @@ class Reviewbuddy < Formula
         - Set OPENAI_API_KEY and one search provider key (EXA_API_KEY, TAVILY_API_KEY, or FIRECRAWL_API_KEY)
         - Run `reviewbuddy doctor` before first use
 
-      Tap maintenance skill:
-        #{opt_pkgshare}/skills/reviewbuddy-tap-maintainer
+      Bundled ReviewBuddy skill:
+        #{opt_pkgshare}/skills/reviewbuddy-cli
     EOS
   end
 
   test do
     assert_match "tool run --from", (bin/"reviewbuddy").read
-    assert_path_exists pkgshare/"skills/reviewbuddy-tap-maintainer/SKILL.md"
+    assert_path_exists pkgshare/"skills/reviewbuddy-cli/SKILL.md"
   end
 end
