@@ -1,0 +1,21 @@
+name: validate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  brew-validate:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Homebrew
+        run: brew update
+      - name: Audit formula
+        run: brew audit --strict --online ./Formula/reviewbuddy.rb
+      - name: Install formula
+        run: brew install --build-from-source ./Formula/reviewbuddy.rb
+      - name: Test formula
+        run: brew test reviewbuddy
