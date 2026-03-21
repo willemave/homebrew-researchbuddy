@@ -30,5 +30,6 @@
 - Playwright browsers are installed after brew install with:
   - `$(brew --prefix)/opt/reviewbuddy/libexec/bin/python -m playwright install`
 - Required environment:
-  - `OPENAI_API_KEY`
   - one search provider key: `EXA_API_KEY`, `TAVILY_API_KEY`, or `FIRECRAWL_API_KEY`
+  - optional override: `SEARCH_PROVIDER`
+  - auto-detected config sources: `~/.hermes/.env`, `~/.openclaw/openclaw.json`

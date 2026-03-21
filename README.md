@@ -9,6 +9,8 @@ brew tap willemave/reviewbuddy
 brew install reviewbuddy
 ```
 
+ReviewBuddy does not require `OPENAI_API_KEY` when using local agent harnesses such as Codex or Claude. You still need at least one search provider key: `EXA_API_KEY`, `TAVILY_API_KEY`, or `FIRECRAWL_API_KEY`. If `SEARCH_PROVIDER` is unset, ReviewBuddy auto-selects from the configured keys. It also auto-loads provider config from `~/.hermes/.env` and `~/.openclaw/openclaw.json` when present.
+
 If another formula with the same name ever exists, use the fully qualified name:
 
 ```bash

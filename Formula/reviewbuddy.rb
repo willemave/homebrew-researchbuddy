@@ -25,7 +25,9 @@ class Reviewbuddy < Formula
       Additional runtime setup:
         - Install Playwright browsers after bootstrap if `reviewbuddy doctor` reports they are missing
         - Install and authenticate codex: codex login
-        - Set OPENAI_API_KEY and one search provider key (EXA_API_KEY, TAVILY_API_KEY, or FIRECRAWL_API_KEY)
+        - Set at least one search provider key (EXA_API_KEY, TAVILY_API_KEY, or FIRECRAWL_API_KEY)
+        - Optionally set SEARCH_PROVIDER to override auto-selection
+        - ReviewBuddy also auto-loads provider config from ~/.hermes/.env and ~/.openclaw/openclaw.json
         - Run `reviewbuddy doctor` before first use
 
       Bundled ReviewBuddy skill:
