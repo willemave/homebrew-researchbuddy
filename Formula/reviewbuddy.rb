@@ -1,8 +1,8 @@
 class Reviewbuddy < Formula
   desc "AI-powered review research assistant with parallel crawling and synthesis"
   homepage "https://github.com/willemave/reviewbuddy"
-  url "https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "26120c196daec1bf6ae19876e5f1734d0108aba0f9ef60f7f9b8a25f7ae6448e"
+  url "https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "70b7241b237fdf717ada7c696090491c13f228ae1428ad168e4d7bd13d94d72d"
 
   depends_on "ffmpeg"
   depends_on "uv"
@@ -11,7 +11,7 @@ class Reviewbuddy < Formula
     (bin/"reviewbuddy").write <<~SH
       #!/usr/bin/env bash
       set -euo pipefail
-      exec "#{Formula["uv"].opt_bin}/uv" tool run --from "git+https://github.com/willemave/reviewbuddy.git@v0.1.0" reviewbuddy "$@"
+      exec "#{Formula["uv"].opt_bin}/uv" tool run --from "git+https://github.com/willemave/reviewbuddy.git@v0.1.1" reviewbuddy "$@"
     SH
     pkgshare.install "skills"
     pkgshare.install "docs"
@@ -20,7 +20,7 @@ class Reviewbuddy < Formula
   def caveats
     <<~EOS
       ReviewBuddy bootstraps the tagged CLI package through uv on first run:
-        #{Formula["uv"].opt_bin}/uv tool run --from "git+https://github.com/willemave/reviewbuddy.git@v0.1.0" reviewbuddy
+        #{Formula["uv"].opt_bin}/uv tool run --from "git+https://github.com/willemave/reviewbuddy.git@v0.1.1" reviewbuddy
 
       Additional runtime setup:
         - Install Playwright browsers after bootstrap if `reviewbuddy doctor` reports they are missing
