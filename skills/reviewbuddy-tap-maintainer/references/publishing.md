@@ -3,15 +3,15 @@
 ## Release Inputs
 
 - Source repository: `https://github.com/willemave/reviewbuddy`
-- Release tarball pattern: `https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.1.tar.gz`
+- Release tarball pattern: `https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.2.tar.gz`
 - Formula file: `Formula/reviewbuddy.rb`
 
 ## Release Checklist
 
-1. Push the source tag, for example `v0.1.1`.
+1. Push the source tag, for example `v0.1.2`.
 2. Compute the release SHA:
    ```bash
-   curl -L https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.1.tar.gz | shasum -a 256
+   curl -L https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.2.tar.gz | shasum -a 256
    ```
 3. Update the formula fields:
    - `url`
@@ -32,4 +32,6 @@
 - Required environment:
   - one search provider key: `EXA_API_KEY`, `TAVILY_API_KEY`, or `FIRECRAWL_API_KEY`
   - optional override: `SEARCH_PROVIDER`
-  - auto-detected config sources: `~/.hermes/.env`, `~/.openclaw/openclaw.json`
+- Additional auto-detected config sources:
+  - `~/.hermes/.env`
+  - `~/.openclaw/openclaw.json`
