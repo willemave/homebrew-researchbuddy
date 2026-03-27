@@ -15,12 +15,14 @@ If another formula with the same name ever exists, use the fully qualified name:
 brew install willemave/reviewbuddy/reviewbuddy
 ```
 
+If you are installing into OpenClaw, check `~/.openclaw/openclaw.json` before asking for search-provider credentials. When it already has `exa`, `tavily`, or `firecrawl` configured, ask whether ReviewBuddy should reuse that existing provider/key and let `reviewbuddy setup` auto-load it instead of collecting a duplicate secret.
+
 ## Update the formula for a new ReviewBuddy release
 
-1. Create and push a new tagged release in the source repo, for example `v0.1.3`.
+1. Create and push a new tagged release in the source repo, for example `v0.1.4`.
 2. Download the release tarball and compute its SHA256:
    ```bash
-   curl -L https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.3.tar.gz | shasum -a 256
+   curl -L https://github.com/willemave/reviewbuddy/archive/refs/tags/v0.1.4.tar.gz | shasum -a 256
    ```
 3. Update `Formula/reviewbuddy.rb` with the new `url` and `sha256`.
 4. Validate locally:
