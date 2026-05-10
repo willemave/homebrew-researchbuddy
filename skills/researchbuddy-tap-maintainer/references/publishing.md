@@ -3,15 +3,15 @@
 ## Release Inputs
 
 - Source repository: `https://github.com/willemave/researchbuddy`
-- Release tarball pattern: `https://github.com/willemave/researchbuddy/archive/refs/tags/v0.1.5.tar.gz`
+- Release tarball pattern: `https://github.com/willemave/researchbuddy/archive/refs/tags/v0.1.6.tar.gz`
 - Formula file: `Formula/researchbuddy.rb`
 
 ## Release Checklist
 
-1. Push the source tag, for example `v0.1.5`.
+1. Push the source tag, for example `v0.1.6`.
 2. Compute the release SHA:
    ```bash
-   curl -L https://github.com/willemave/researchbuddy/archive/refs/tags/v0.1.5.tar.gz | shasum -a 256
+   curl -L https://github.com/willemave/researchbuddy/archive/refs/tags/v0.1.6.tar.gz | shasum -a 256
    ```
 3. Update the formula fields:
    - `url`
