@@ -14,8 +14,8 @@ jobs:
       - name: Set up Homebrew
         run: brew update
       - name: Audit formula
-        run: brew audit --strict --online ./Formula/reviewbuddy.rb
+        run: brew audit --strict --online ./Formula/researchbuddy.rb
       - name: Install formula
-        run: brew install --build-from-source ./Formula/reviewbuddy.rb
+        run: brew install --build-from-source ./Formula/researchbuddy.rb
       - name: Test formula
-        run: brew test reviewbuddy
+        run: brew test researchbuddy

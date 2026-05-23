@@ -1,43 +1,49 @@
 class Researchbuddy < Formula
   desc "AI-powered review research assistant with parallel crawling and synthesis"
   homepage "https://github.com/willemave/researchbuddy"
-  url "https://github.com/willemave/researchbuddy/archive/refs/tags/v0.1.6.tar.gz"
-  sha256 "2ca6067731ad8e1fcf77ad71dbd07d18eb118dc43708ed72ef42e669b54883d6"
+  url "https://github.com/willemave/researchbuddy/archive/refs/tags/v0.1.7.tar.gz"
+  sha256 "90200dc035d5b79cb439f29a17ad7182770975417d1b7c838d910eada8d266de"
 
   depends_on "ffmpeg"
   depends_on "uv"
 
   def install
+    pkgshare.install "constraints.txt"
+    pkgshare.install "skills"
+    pkgshare.install "docs"
+
     (bin/"researchbuddy").write <<~SH
       #!/usr/bin/env bash
       set -euo pipefail
-      exec "#{Formula["uv"].opt_bin}/uv" tool run --from "git+https://github.com/willemave/researchbuddy.git@v0.1.6" researchbuddy "$@"
+      export RESEARCHBUDDY_SKILL_DIR="#{opt_pkgshare}/skills/research"
+      exec "#{Formula["uv"].opt_bin}/uv" tool run --python "3.11" --constraints "#{opt_pkgshare}/constraints.txt" --from "git+https://github.com/willemave/researchbuddy.git@v0.1.7" researchbuddy "$@"
     SH
-    pkgshare.install "skills"
-    pkgshare.install "docs"
   end
 
   def caveats
     <<~EOS
       ResearchBuddy bootstraps the tagged CLI package through uv on first run:
-        #{Formula["uv"].opt_bin}/uv tool run --from "git+https://github.com/willemave/researchbuddy.git@v0.1.6" researchbuddy
+        #{Formula["uv"].opt_bin}/uv tool run --python 3.11 --constraints "#{opt_pkgshare}/constraints.txt" --from "git+https://github.com/willemave/researchbuddy.git@v0.1.7" researchbuddy
 
       Additional runtime setup:
-        - Install Playwright browsers after bootstrap if `researchbuddy doctor` reports they are missing
+        - Run `researchbuddy doctor --fix` to create local state and install Playwright browsers into the uv tool runtime
         - Install and authenticate codex: codex login
-        - Set at least one search provider key (EXA_API_KEY, TAVILY_API_KEY, or FIRECRAWL_API_KEY)
+        - Configure at least one search provider key through environment, ~/.hermes/.env, ~/.openclaw/.env plus ~/.openclaw/openclaw.json, or manual ResearchBuddy .env
         - Optionally set SEARCH_PROVIDER to override auto-selection
         - In OpenClaw, first check ~/.openclaw/openclaw.json and reuse an existing exa/tavily/firecrawl key when the user approves
-        - ResearchBuddy also auto-loads provider config from ~/.hermes/.env and ~/.openclaw/openclaw.json
+        - ResearchBuddy auto-loads provider config from ~/.hermes/.env, ~/.openclaw/.env, and ~/.openclaw/openclaw.json without copying credentials
+        - Install the OpenClaw skill with: researchbuddy skills install openclaw --scope shared
         - Run `researchbuddy doctor` before first use
 
-      Tap maintenance skill:
-        #{opt_pkgshare}/skills/researchbuddy-cli
+      Bundled research skill:
+        #{opt_pkgshare}/skills/research
     EOS
   end
 
   test do
-    assert_match "tool run --from", (bin/"researchbuddy").read
-    assert_path_exists pkgshare/"skills/researchbuddy-cli/SKILL.md"
+    assert_match "tool run --python", (bin/"researchbuddy").read
+    assert_match "--constraints", (bin/"researchbuddy").read
+    assert_path_exists pkgshare/"constraints.txt"
+    assert_path_exists pkgshare/"skills/research/SKILL.md"
   end
 end
